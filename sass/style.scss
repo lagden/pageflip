@@ -1,0 +1,45 @@
+@charset "UTF-8";
+/*------------------------------------*\
+    STYLE.CSS
+\*------------------------------------*/
+/**
+ * 
+ * sass --watch style.scss:style.min.css --style compressed
+ * 
+ * Here we pull in some variables, include the inuit.css framework, then add our
+ * project-specific components afterwards.
+ */
+
+
+/**
+ * Setup
+ */
+@import "compass/css3/user-interface";
+@import "vars";
+@import "inuit.css/inuit";
+
+html{
+    width: 100%;
+    height: 100%;
+}
+
+body{
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    overflow: hidden;
+}
+
+.table--jornal{
+    @include user-select(none);
+    background-color: red;
+    width: 100%;
+    height: 100%;
+    tr{
+        td{
+            vertical-align: middle;
+        }
+    }
+}
+
+// convert -density 72 -quality 80 -resize x800 example.pdf page.jpg
