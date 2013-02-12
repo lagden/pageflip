@@ -4635,14 +4635,15 @@ body {
 }
 /* line 52, ../sass/style.scss */
 .table--jornal tr td {
+  text-align: center;
   vertical-align: middle;
 }
 
-/* line 59, ../sass/style.scss */
+/* line 60, ../sass/style.scss */
 .figure {
   position: relative;
 }
-/* line 61, ../sass/style.scss */
+/* line 62, ../sass/style.scss */
 .figure .showZoom {
   position: absolute;
   top: 0;
@@ -4653,7 +4654,7 @@ body {
   text-align: center;
   display: none;
 }
-/* line 70, ../sass/style.scss */
+/* line 71, ../sass/style.scss */
 .figure .showZoom a {
   display: block;
   font-size: 20px;
@@ -4661,23 +4662,23 @@ body {
   color: white;
   cursor: url("images/zoom.png"), url("/works/pageflip/css/images/zoom.cur"), default;
 }
-/* line 80, ../sass/style.scss */
+/* line 81, ../sass/style.scss */
 .figure:hover .showZoom {
   display: block;
 }
-/* line 84, ../sass/style.scss */
+/* line 85, ../sass/style.scss */
 .figure img {
   display: block;
 }
 
-/* line 90, ../sass/style.scss */
+/* line 91, ../sass/style.scss */
 .fancybox-inner {
   background-color: white;
   overflow: hidden;
   position: relative;
   -webkit-transform: translateZ(0);
 }
-/* line 96, ../sass/style.scss */
+/* line 97, ../sass/style.scss */
 .fancybox-inner .content {
   position: relative;
   z-index: 1;
@@ -4685,12 +4686,12 @@ body {
   left: 0;
   cursor: url("images/openhand.png"), url("/works/pageflip/css/images/openhand.cur"), default;
 }
-/* line 104, ../sass/style.scss */
+/* line 105, ../sass/style.scss */
 .fancybox-inner .content:active {
   cursor: url("images/closedhand.png"), url("/works/pageflip/css/images/closedhand.cur"), default;
 }
 
-/* line 112, ../sass/style.scss */
+/* line 113, ../sass/style.scss */
 .loadingIcon {
   background-color: #007fc7;
   background-color: rgba(0, 127, 199, 0.5);
@@ -4705,7 +4706,7 @@ body {
   z-index: 9999;
   pointer-events: none;
 }
-/* line 125, ../sass/style.scss */
+/* line 126, ../sass/style.scss */
 .loadingIcon .loadingArc {
   background-image: url('../images/loading.png?1360639310');
   background-color: transparent;

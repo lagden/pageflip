@@ -50,6 +50,7 @@ body{
     height: 100%;
     tr{
         td{
+            text-align: center;
             vertical-align: middle;
             @extend .unselectable;
         }

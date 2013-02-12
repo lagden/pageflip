@@ -19,28 +19,30 @@ $edicao = isset($_GET['edicao']) ? $_GET['edicao'] : 1;
     <table class="table--jornal">
         <tr>
             <td>
-                <div id="theBook" class="theBook hidden">
-                    <?php
-                    $itens = glob(__DIR__."/jornal/{$edicao}/*.jpg", GLOB_BRACE);
+                <?php
+                $itens = glob(__DIR__."/jornal/{$edicao}/*.jpg", GLOB_BRACE);
+                if(!empty($itens))
+                {
+                    echo '<div id="theBook" class="theBook hidden">';
                     natcasesort($itens);
-                    if($itens)
+                    foreach($itens as $item)
                     {
-                        foreach($itens as $item)
-                        {
-                            $file = "jornal/{$edicao}/".basename($item);
-                            $fileZoom = "jornal/{$edicao}/zoom/".basename($item);
-                            echo '
-                            <div class="figure">
-                                <div class="showZoom">
-                                    <a href="zoom.php?img='.base64_encode($fileZoom).'" class="fancybox.ajax triggerZoom">Ampliar</a>
-                                </div>
-                                <img src="'.$file.'" alt="">
+                        $file = "jornal/{$edicao}/".basename($item);
+                        $fileZoom = "jornal/{$edicao}/zoom/".basename($item);
+                        echo '
+                        <div class="figure">
+                            <div class="showZoom">
+                                <a href="zoom.php?img='.base64_encode($fileZoom).'" class="fancybox.ajax triggerZoom">Ampliar</a>
                             </div>
-                            ';
-                        }
+                            <img src="'.$file.'" alt="">
+                        </div>
+                        ';
                     }
-                    ?>
-                </div>
+                    echo '</div>';
+                }
+                else
+                    echo "Edição nº {$edicao} não encontrada.";
+                ?>
             </td>
         </tr>
     </table>
