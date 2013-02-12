@@ -4450,15 +4450,47 @@ html.flexbox {
   margin-left: 0!important;
 }
 
+/* line 29, ../sass/inuit.css/generic/_helper.scss */
+.hidden {
+  display: none !important;
+  visibility: hidden;
+}
+
+/* line 35, ../sass/inuit.css/generic/_helper.scss */
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+/* line 46, ../sass/inuit.css/generic/_helper.scss */
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+/* line 57, ../sass/inuit.css/generic/_helper.scss */
+.invisible {
+  visibility: hidden;
+}
+
 /**
  * Pull items full width of `.island` parents.
  */
-/* line 32, ../sass/inuit.css/generic/_helper.scss */
+/* line 65, ../sass/inuit.css/generic/_helper.scss */
 .full-bleed {
   margin-right: -24px !important;
   margin-left: -24px !important;
 }
-/* line 36, ../sass/inuit.css/generic/_helper.scss */
+/* line 69, ../sass/inuit.css/generic/_helper.scss */
 .islet .full-bleed {
   margin-right: -12px !important;
   margin-left: -12px !important;
@@ -4468,7 +4500,7 @@ html.flexbox {
  * Add a help cursor to any element that gives the user extra information on
  * `:hover`.
  */
-/* line 47, ../sass/inuit.css/generic/_helper.scss */
+/* line 80, ../sass/inuit.css/generic/_helper.scss */
 .informative {
   cursor: help;
 }
@@ -4476,7 +4508,7 @@ html.flexbox {
 /**
  * Mute an object by reducing its opacity.
  */
-/* line 55, ../sass/inuit.css/generic/_helper.scss */
+/* line 88, ../sass/inuit.css/generic/_helper.scss */
 .muted {
   opacity: 0.5;
   filter: alpha(opacity=50);
@@ -4488,7 +4520,7 @@ html.flexbox {
    <p class=proceed><a href=#>Read more...</a></p>
  * 
  */
-/* line 67, ../sass/inuit.css/generic/_helper.scss */
+/* line 100, ../sass/inuit.css/generic/_helper.scss */
 .proceed {
   text-align: right;
 }
@@ -4499,7 +4531,7 @@ html.flexbox {
    <a href=# class=go>Read more</a>
  * 
  */
-/* line 78, ../sass/inuit.css/generic/_helper.scss */
+/* line 111, ../sass/inuit.css/generic/_helper.scss */
 .go:after {
   content: " »";
 }
@@ -4507,7 +4539,7 @@ html.flexbox {
 /**
  * Apply capital case to an element (usually a `strong`).
  */
-/* line 86, ../sass/inuit.css/generic/_helper.scss */
+/* line 119, ../sass/inuit.css/generic/_helper.scss */
 .caps {
   text-transform: uppercase;
 }
@@ -4515,13 +4547,13 @@ html.flexbox {
 /**
  * Hide content off-screen without resorting to `display:none;`
  */
-/* line 94, ../sass/inuit.css/generic/_helper.scss */
+/* line 127, ../sass/inuit.css/generic/_helper.scss */
 .accessibility {
   position: absolute;
   left: -99999px;
 }
 
-/* line 95, ../sass/inuit.css/generic/_helper.scss */
+/* line 128, ../sass/inuit.css/generic/_helper.scss */
 [dir=rtl] .accessibility {
   left: auto;
   right: -99999px;
@@ -4530,65 +4562,161 @@ html.flexbox {
 /**
  * Hide content based on breakpoint
  */
-/* line 101, ../sass/inuit.css/generic/_helper.scss */
+/* line 134, ../sass/inuit.css/generic/_helper.scss */
 .hide {
   position: absolute;
   left: -9999px;
 }
 
 @media only screen and (max-width: 480px) {
-  /* line 107, ../sass/inuit.css/generic/_helper.scss */
+  /* line 140, ../sass/inuit.css/generic/_helper.scss */
   .hide--palm {
     position: absolute;
     left: -9999px;
   }
 }
 @media only screen and (min-width: 481px) and (max-width: 1023px) {
-  /* line 107, ../sass/inuit.css/generic/_helper.scss */
+  /* line 140, ../sass/inuit.css/generic/_helper.scss */
   .hide--lap {
     position: absolute;
     left: -9999px;
   }
 }
 @media only screen and (max-width: 1023px) {
-  /* line 107, ../sass/inuit.css/generic/_helper.scss */
+  /* line 140, ../sass/inuit.css/generic/_helper.scss */
   .hide--portable {
     position: absolute;
     left: -9999px;
   }
 }
 @media only screen and (min-width: 1024px) {
-  /* line 107, ../sass/inuit.css/generic/_helper.scss */
+  /* line 140, ../sass/inuit.css/generic/_helper.scss */
   .hide--desk {
     position: absolute;
     left: -9999px;
   }
 }
 /* endif */
-/* line 21, ../sass/style.scss */
+/* line 23, ../sass/style.scss */
 html {
   width: 100%;
   height: 100%;
 }
 
-/* line 26, ../sass/style.scss */
+/* line 28, ../sass/style.scss */
 body {
   width: 100%;
   height: 100%;
   padding: 0;
-  overflow: hidden;
+  background-color: #00256d;
+  background-color: rgba(0, 127, 199, 0.1);
 }
 
-/* line 33, ../sass/style.scss */
-.table--jornal {
-  -webkit-user-select: none;
+/* line 36, ../sass/style.scss */
+.unselectable, .table--jornal tr td, .figure img, .fancybox-inner, .fancybox-inner .content {
+  /* For Opera and <= IE9, we need to add unselectable="on" attribute onto each element */
+  /* Check this site for more details: http://help.dottoro.com/lhwdpnva.php */
   -moz-user-select: none;
+  /* These user-select properties are inheritable, used to prevent text selection */
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  /* From IE10 only */
   user-select: none;
-  background-color: red;
+  /* Not valid CSS yet, as of July 2012 */
+  -webkit-user-drag: none;
+  /* Prevents dragging of images/divs etc */
+  user-drag: none;
+}
+
+/* line 48, ../sass/style.scss */
+.table--jornal {
   width: 100%;
   height: 100%;
 }
-/* line 39, ../sass/style.scss */
+/* line 52, ../sass/style.scss */
 .table--jornal tr td {
   vertical-align: middle;
+}
+
+/* line 59, ../sass/style.scss */
+.figure {
+  position: relative;
+}
+/* line 61, ../sass/style.scss */
+.figure .showZoom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  display: none;
+}
+/* line 70, ../sass/style.scss */
+.figure .showZoom a {
+  display: block;
+  font-size: 20px;
+  font-size: 1rem;
+  color: white;
+  cursor: url("images/zoom.png"), url("/works/pageflip/css/images/zoom.cur"), default;
+}
+/* line 80, ../sass/style.scss */
+.figure:hover .showZoom {
+  display: block;
+}
+/* line 84, ../sass/style.scss */
+.figure img {
+  display: block;
+}
+
+/* line 90, ../sass/style.scss */
+.fancybox-inner {
+  background-color: white;
+  overflow: hidden;
+  position: relative;
+  -webkit-transform: translateZ(0);
+}
+/* line 96, ../sass/style.scss */
+.fancybox-inner .content {
+  position: relative;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  cursor: url("images/openhand.png"), url("/works/pageflip/css/images/openhand.cur"), default;
+}
+/* line 104, ../sass/style.scss */
+.fancybox-inner .content:active {
+  cursor: url("images/closedhand.png"), url("/works/pageflip/css/images/closedhand.cur"), default;
+}
+
+/* line 112, ../sass/style.scss */
+.loadingIcon {
+  background-color: #007fc7;
+  background-color: rgba(0, 127, 199, 0.5);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  bottom: auto;
+  right: auto;
+  overflow: hidden;
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+}
+/* line 125, ../sass/style.scss */
+.loadingIcon .loadingArc {
+  background-image: url('../images/loading.png?1360639310');
+  background-color: transparent;
+  background-position: center center;
+  background-repeat: no-repeat;
+  margin-left: -50px;
+  margin-top: -50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 101px;
+  height: 101px;
+  overflow: hidden;
 }

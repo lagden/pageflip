@@ -14,9 +14,11 @@
 /**
  * Setup
  */
-@import "compass/css3/user-interface";
 @import "vars";
 @import "inuit.css/inuit";
+
+$azul: #007FC7;
+$azul_claro: $azul - 90;
 
 html{
     width: 100%;
@@ -27,19 +29,111 @@ body{
     width: 100%;
     height: 100%;
     padding: 0;
-    overflow: hidden;
+    background-color: $azul_claro;
+    background-color: rgba($azul,.1);
+}
+
+.unselectable {
+    /* For Opera and <= IE9, we need to add unselectable="on" attribute onto each element */
+    /* Check this site for more details: http://help.dottoro.com/lhwdpnva.php */
+    -moz-user-select: none; /* These user-select properties are inheritable, used to prevent text selection */
+    -webkit-user-select: none;
+    -ms-user-select: none; /* From IE10 only */
+    user-select: none; /* Not valid CSS yet, as of July 2012 */
+
+    -webkit-user-drag: none; /* Prevents dragging of images/divs etc */
+    user-drag: none;
 }
 
 .table--jornal{
-    @include user-select(none);
-    background-color: red;
     width: 100%;
     height: 100%;
     tr{
         td{
             vertical-align: middle;
+            @extend .unselectable;
         }
     }
 }
 
-// convert -density 72 -quality 80 -resize x800 example.pdf page.jpg
+.figure{
+    position: relative;
+    .showZoom{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: black;
+        background-color: rgba(black,.5);
+        text-align: center;
+        display: none;
+        a{
+            display: block;
+            font-size: 20px;
+            font-size: 1rem;
+            color: white;
+            cursor: url("images/zoom.png"), url("/works/pageflip/css/images/zoom.cur"), default; // para o IE tem que ser o full path
+            // cursor: -webkit-zoom-in; cursor: -moz-zoom-in;
+        }
+    }
+    &:hover{
+        .showZoom{
+            display: block;
+        }
+    }
+    img{
+        @extend .unselectable;
+        display: block;
+    }
+}
+
+.fancybox-inner{
+    background-color: white;
+    overflow: hidden;
+    position: relative;
+    -webkit-transform: translateZ(0);
+    @extend .unselectable;
+    .content{
+        @extend .unselectable;
+        position: relative;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        cursor: url("images/openhand.png"), url("/works/pageflip/css/images/openhand.cur"), default; // para o IE tem que ser o full path
+        // cursor: -webkit-grab; cursor: -moz-grab;
+        &:active{
+            cursor: url("images/closedhand.png"), url("/works/pageflip/css/images/closedhand.cur"), default; // para o IE tem que ser o full path
+            // cursor: -webkit-grabbing; cursor: -moz-grabbing;
+        }
+    }
+}
+
+// Loading
+.loadingIcon{
+    background-color: $azul;
+    background-color: rgba($azul,.5);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    bottom: auto;
+    right: auto;
+    overflow: hidden;
+    position: fixed;
+    z-index: 9999;
+    pointer-events: none;
+    .loadingArc{
+        background-image: image-url('loading.png');
+        background-color: transparent;
+        background-position: center center;
+        background-repeat: no-repeat;
+        margin-left: -50px;
+        margin-top: -50px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 101px;
+        height: 101px;
+        overflow: hidden;
+    }
+}

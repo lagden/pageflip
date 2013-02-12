@@ -1,0 +1,30 @@
+#!/usr/bin/env sh
+
+THIS=$(basename $0)
+DIR="$( cd -P "$( dirname "$0" )" && pwd )"
+cd $DIR
+cd ..
+CURR_FOLDER=`pwd`
+
+# Go
+cd $CURR_FOLDER
+
+BASE=false
+
+while getopts "f:" OPT; do
+    case $OPT in    
+    f) BASE=$OPTARG;;
+    \?) usage; exit;;
+    esac
+done
+
+if [[ $BASE == false ]]; then
+    exit
+fi
+
+# Convert
+CONVERT_BIN='convert'
+$CONVERT_BIN -strip -colorspace RGB -alpha off -resize 480 -density 72 $BASE -quality 80 -sharpen 0x1.0 page.jpg
+$CONVERT_BIN -strip -colorspace RGB -alpha off -density 150 $BASE -quality 80 -sharpen 0x1.0 zoom/page.jpg
+
+exit
